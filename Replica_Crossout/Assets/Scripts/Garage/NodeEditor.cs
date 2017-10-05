@@ -13,14 +13,12 @@ public class NodeEditor : Editor
 
     Node node;
 
-    static int a = 0;
-
     static bool alreadyInit = false;
 
+    //创建一个新检视器时
     private void OnEnable()
     {
-        a++;
-        //Debug.Log("Node Editor Run Count:" + a);
+        //Debug.Log("New node editor enable");
 
         node = (Node)target;
 
@@ -39,17 +37,18 @@ public class NodeEditor : Editor
             node.Init();
         }
 
-        //for (int i = 0; i < toggle.Length; i++)
-        //{
-        //    //Debug.Log(node.toggle[i]);
-        //    toggle[i] = node.toggle[i]; 
-        //    toggleLast[i] = node.toggle[i];
-        //}
+        for (int i = 0; i < toggle.Length; i++)
+        {
+            toggle[i] = node.toggle[i];
+            toggleLast[i] = node.toggle[i];
+        }
 
     }
     //检视器更改
     public override void OnInspectorGUI()
     {
+        //Debug.Log(node.name);
+
         base.OnInspectorGUI();
         //DrawDefaultInspector();
 
@@ -59,11 +58,11 @@ public class NodeEditor : Editor
         GUILayout.Label("设置焊点位置:");
 
         //更新当前勾选
-        for (int i = 0; i < toggle.Length; i++)
-        {
-            toggle[i] = node.toggle[i];
-            toggleLast[i] = node.toggle[i];
-        }
+        //for (int i = 0; i < toggle.Length; i++)
+        //{
+        //    toggle[i] = node.toggle[i];
+        //    toggleLast[i] = node.toggle[i];
+        //}
 
         //return;
 

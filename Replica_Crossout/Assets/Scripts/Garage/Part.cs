@@ -8,7 +8,7 @@ public class Part : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("qwe");
+        Debug.Log("Trigger");
         collided = true;
 
     }

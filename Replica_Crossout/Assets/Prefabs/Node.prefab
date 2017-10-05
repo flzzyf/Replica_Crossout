@@ -22,13 +22,12 @@ GameObject:
   - component: {fileID: 33413736839156412}
   - component: {fileID: 65019079150253656}
   - component: {fileID: 23894444335625946}
-  - component: {fileID: 114381546432040358}
   - component: {fileID: 54588845174760814}
   - component: {fileID: 114105485838033110}
   - component: {fileID: 114247938498339046}
-  m_Layer: 8
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Layer: 0
+  m_Name: Node
+  m_TagString: Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,16 +138,4 @@ MonoBehaviour:
   weldPointPrefab: {fileID: 1747024227899834, guid: 66babf9fc29dad84f9b514ba63cccc1c,
     type: 2}
   toggle: 000000000000
-  alreadyInit: 1
---- !u!114 &114381546432040358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1434854126108966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f8efcb4a9efa846bfb1336b14dbf45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 0}
+  alreadyInit: 0

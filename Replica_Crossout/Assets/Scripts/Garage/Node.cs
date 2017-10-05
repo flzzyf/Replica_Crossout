@@ -21,7 +21,7 @@ public class Node : MonoBehaviour {
 
     public static void StaticInit()
     {
-        //Debug.Log("Static"); 
+        Debug.Log("Static"); 
 
         position = new Vector3[6];
         rotation = new Vector3[6];
@@ -47,7 +47,7 @@ public class Node : MonoBehaviour {
 
     public void Init()
     {
-        //Debug.Log("Init");
+        Debug.Log("Init");
 
         toggle = new bool[6];
 
