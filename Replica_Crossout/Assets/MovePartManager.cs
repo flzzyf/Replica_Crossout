@@ -11,6 +11,8 @@ public class MovePartManager : MonoBehaviour {
 
     public LayerMask layer;
 
+    public float maxDistance = 15f;
+
     private void Start()
     {
         cam = Camera.main;
@@ -48,7 +50,7 @@ public class MovePartManager : MonoBehaviour {
                     movingObj.transform.position = cam.transform.position;
 
                 StopAllCoroutines();
-                StartCoroutine(Move());
+                Move();
 
 
 
@@ -77,9 +79,9 @@ public class MovePartManager : MonoBehaviour {
     }
 
 
-    IEnumerator Move()
+    void Move()
     {
-        while (movingObj.GetComponent<Part>().collided == false && Vector3.Distance(movingObj.position, Vector3.zero) < 15)
+        while (movingObj.GetComponent<Part>().Collided() == false && Vector3.Distance(movingObj.position, cam.transform.position) < maxDistance)
         {
 
             movingObj.Translate(cam.transform.forward * 1f);
@@ -90,7 +92,6 @@ public class MovePartManager : MonoBehaviour {
 
             //movingObj.gameObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward * 0.5f);
 
-            yield return new WaitForFixedUpdate();
 
         }
     }

@@ -88,4 +88,6 @@ public class Node : MonoBehaviour {
     {
         return "WeldPoint_" + directionName[_index];
     }
+
+
 }

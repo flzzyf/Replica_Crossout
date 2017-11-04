@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class Part : MonoBehaviour {
 
-    public bool collided = false;
+    public LayerMask layer;
 
-    private void OnTriggerEnter(Collider other)
+    public bool Collided()
     {
-        Debug.Log("Trigger");
-        collided = true;
+        Collider[] colliders = Physics.OverlapBox(transform.position, Vector3.one * 1f, transform.rotation, layer);
 
+
+        foreach (Collider item in colliders)
+        {
+            if(item.gameObject != gameObject)
+            {
+                Debug.Log(gameObject.name);
+                return true;
+            }
+        }
+
+        return false;
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        collided = false;
-
-    }
-
 
 }

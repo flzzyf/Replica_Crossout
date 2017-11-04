@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54588845174760814}
   - component: {fileID: 114105485838033110}
   - component: {fileID: 114247938498339046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Node
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -123,7 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db05fc4ec235f0478fc0d63dfadcafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collided: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!114 &114247938498339046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,4 +140,4 @@ MonoBehaviour:
   weldPointPrefab: {fileID: 1747024227899834, guid: 66babf9fc29dad84f9b514ba63cccc1c,
     type: 2}
   toggle: 000000000000
-  alreadyInit: 0
+  alreadyInit: 1
