@@ -56,23 +56,10 @@ public class CameraControl_Garage : MonoBehaviour {
             localRotation.y += inputMouseX * mouseSensitivity;
             localRotation.x -= inputMouseY * mouseSensitivity;
 
-            //Debug.Log(localRotation);
-            //Debug.Log(Util.EulerAngleNegativeFix(localRotation));
-
-            //localRotation = Util.EulerAngleNegativeFix(localRotation);
-
             //限制镜头角度
             localRotation.x = Mathf.Clamp(localRotation.x, -90, 90);
 
             //旋转镜头
-            //Vector3 rotation = new Vector3(Util.EulerAngleNegativeFix(localRotation.y), -localRotation.x, 0);
-            //Vector3 rotation = new Vector3(localRotation.x, localRotation.y, 0);
-            //Quaternion qt = Quaternion.Euler(rotation);
-            //camOrigin.rotation = Quaternion.Lerp(camOrigin.rotation, qt, Time.deltaTime * cameraRotateSpeed);
-
-            //camOrigin.rotation = qt;
-            //rotation = new Vector3(localRotation.y, localRotation.x, 0);
-            //camOrigin.rotation = Quaternion.Euler(rotation);
             camOrigin.rotation = Quaternion.Euler(localRotation);
 
         }
@@ -96,18 +83,19 @@ public class CameraControl_Garage : MonoBehaviour {
         float inputHorizontal = Input.GetAxisRaw("Horizontal");
         float inputVertical = Input.GetAxisRaw("Vertical");
 
-        float up = 0;
-        if (Input.GetKey(KeyCode.Space))
-        {
-            up = 1;
-        }
-        else if (Input.GetKey(KeyCode.LeftShift))
-        {
-            up = -1;
-        }
 
-        camOrigin.Translate(new Vector3(inputHorizontal, up, inputVertical) * cameraPanSpeed);
+        //camOrigin.Translate(new Vector3(inputHorizontal, up, inputVertical) * cameraPanSpeed);
 
+        Debug.Log(transform.up);
+
+        //镜头上升
+        if(Input.GetKey((KeyCode.Space))){
+            camOrigin.Translate(transform.up * cameraPanSpeed * Time.deltaTime);
+        } 
+        if(Input.GetKey(KeyCode.LeftShift)){
+            camOrigin.Translate(-1 * transform.up * cameraPanSpeed * Time.deltaTime);
+
+        }
 
 
     }
