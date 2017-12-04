@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Node : MonoBehaviour
 {
     public GameObject weldPointPrefab;
@@ -10,11 +9,15 @@ public class Node : MonoBehaviour
     GameObject[] weldPoint = new GameObject[6];
 
     //[HideInInspector]
-    public bool[] toggle = new bool[6];
-    //[HideInInspector]
-    public bool[] toggleLast = new bool[6];
+    public bool[] toggle = new bool[] { true,true,true,true,true,true};
 
-    static string[] directionName = { "上", "下", "左", "右", "前", "后" };
+    public bool tog1;
+    public bool tog2;
+    public bool tog3;
+    //[HideInInspector]
+    public bool[] toggleLast;
+
+    public static string[] directionName = { "上", "下", "左", "右", "前", "后" };
 
     public static Vector3[] position = {
         new Vector3(0, 0.5f, 0),
@@ -33,6 +36,8 @@ public class Node : MonoBehaviour
         new Vector3(0, 0, -90),
         new Vector3(0, 0, 90)
     };
+
+    public bool a = true;
 
     public void ToggleOn(int _index)
     {

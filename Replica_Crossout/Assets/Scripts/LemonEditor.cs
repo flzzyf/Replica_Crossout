@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Lemon))]
-public class LemonEditor : Editor {
+public class LemonEditor : Editor
+{
 
     Lemon lemon;
 
     private void OnEnable()
     {
-        Debug.Log("OnEnable()");
+        //Debug.Log("OnEnable()");
 
         lemon = (Lemon)target;
 
@@ -19,7 +20,7 @@ public class LemonEditor : Editor {
     //检视器更改
     public override void OnInspectorGUI()
     {
-        Debug.Log("OnInspectorGUI()");
+        //Debug.Log("OnInspectorGUI()");
 
         base.OnInspectorGUI();
 
@@ -34,4 +35,5 @@ public class LemonEditor : Editor {
         GUILayout.EndHorizontal();
 
     }
+
 }
