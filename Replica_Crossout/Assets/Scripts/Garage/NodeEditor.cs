@@ -5,66 +5,34 @@ using System.Collections;
 [CustomEditor(typeof(Node))]
 public class NodeEditor : Editor
 {
-
-    bool[] toggle = new bool[6];
-    bool[] toggleLast = new bool[6];
-
     string[] directionName = { "上", "下", "左", "右", "前", "后" };
 
     Node node;
 
-    static bool alreadyInit = false;
+    bool[] toggle;
+    bool[] toggleLast;
 
     //创建一个新检视器时
     private void OnEnable()
     {
-        //Debug.Log("New node editor enable");
+        Debug.Log("OnEnable()");
 
         node = (Node)target;
 
-        if (alreadyInit == false)
-        {
-            alreadyInit = true;
+        toggle = node.toggle;
 
-            Node.StaticInit();
-
-            //node.Init();
-        }
-
-        if (node.alreadyInit == false)
-        {
-
-            node.Init();
-        }
-
-        for (int i = 0; i < toggle.Length; i++)
-        {
-            toggle[i] = node.toggle[i];
-            toggleLast[i] = node.toggle[i];
-        }
+        toggleLast = node.toggleLast;
 
     }
     //检视器更改
     public override void OnInspectorGUI()
     {
-        //Debug.Log(node.name);
+        //Debug.Log("OnInspectorGUI()");
 
         base.OnInspectorGUI();
         //DrawDefaultInspector();
 
-        serializedObject.Update();
-        serializedObject.ApplyModifiedProperties();
-        
         GUILayout.Label("设置焊点位置:");
-
-        //更新当前勾选
-        //for (int i = 0; i < toggle.Length; i++)
-        //{
-        //    toggle[i] = node.toggle[i];
-        //    toggleLast[i] = node.toggle[i];
-        //}
-
-        //return;
 
         for (int i = 0; i < 3; i++)
         {

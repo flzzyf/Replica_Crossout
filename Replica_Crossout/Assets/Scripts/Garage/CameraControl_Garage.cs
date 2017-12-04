@@ -86,7 +86,7 @@ public class CameraControl_Garage : MonoBehaviour {
 
         //camOrigin.Translate(new Vector3(inputHorizontal, up, inputVertical) * cameraPanSpeed);
 
-        Debug.Log(transform.up);
+        //Debug.Log(transform.up);
 
         //镜头上升
         if(Input.GetKey((KeyCode.Space))){
