@@ -10,7 +10,7 @@ public class MovePartManager : MonoBehaviour
     Transform movingObj;
 
     public LayerMask layer_part;
-    public LayerMask layer_wall;
+    public LayerMask layer_collider;
 
     public float maxDistance = 15f;
 
@@ -31,7 +31,7 @@ public class MovePartManager : MonoBehaviour
         if (movingObj == null)
         {
             //从镜头前方获取高亮物体
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 500, layer_part))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, maxDistance, layer_part))
             {
                 target = hit.transform;
 
@@ -41,8 +41,9 @@ public class MovePartManager : MonoBehaviour
                 //鼠标左键点击，选中该物体
                 if (Input.GetMouseButtonDown(0))
                 {
-                    print("选中" + target.gameObject.name);
                     movingObj = target;
+
+                    movingObj.GetComponent<Node>().OnBecomeMoving();
                 }
             }
             else
@@ -55,15 +56,17 @@ public class MovePartManager : MonoBehaviour
             //正在移动物体
 
             //移动该物体到镜头前方的可放置处
-            if (Physics.BoxCast(cam.transform.position, Vector3.one / 2, cam.transform.forward, out hit, Quaternion.identity, 500, layer_wall))
+            if (Physics.BoxCast(cam.transform.position, Vector3.one / 2, cam.transform.forward, out hit, Quaternion.identity, maxDistance, layer_collider))
             {
-                print(hit.normal);
-                movingObj.position = hit.point + hit.normal / 2;
+                if(hit.transform != movingObj)
+                    movingObj.position = hit.point + hit.normal / 2;
             }
 
             //鼠标右键点击，取消移动物体
             if (Input.GetMouseButtonDown(1))
             {
+                movingObj.GetComponent<Node>().OnStopMoving();
+
                 movingObj = null;
             }
         }

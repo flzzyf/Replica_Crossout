@@ -22,11 +22,11 @@ public class Turret : MonoBehaviour
     public GameObject muzzleFlash;
     public GameObject impactEffect;
 
-    AudioSource audio;
+    AudioSource audioSource;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         //获取默认朝向，水平y和竖直x
         initAngleH = Util.EulerAngleNegativeFix(partToRotate.rotation.eulerAngles.y);
@@ -80,7 +80,7 @@ public class Turret : MonoBehaviour
         GameObject particle = Instantiate(muzzleFlash, firePoint.position, Quaternion.identity);
         Destroy(particle, 2f);
 
-        audio.Play();
+        audioSource.Play();
 
         RaycastHit hit;
         if(Physics.Raycast(firePoint.position, firePoint.forward, out hit, 500))

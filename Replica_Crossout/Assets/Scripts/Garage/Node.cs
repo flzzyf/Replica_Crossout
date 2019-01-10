@@ -11,12 +11,6 @@ public class Node : MonoBehaviour
     //[HideInInspector]
     public bool[] toggle = new bool[] { true,true,true,true,true,true};
 
-    public bool tog1;
-    public bool tog2;
-    public bool tog3;
-    //[HideInInspector]
-    public bool[] toggleLast;
-
     public static string[] directionName = { "上", "下", "左", "右", "前", "后" };
 
     public static Vector3[] position = {
@@ -39,6 +33,13 @@ public class Node : MonoBehaviour
 
     public bool a = true;
 
+    new Collider collider;
+
+    void Start()
+    {
+        collider = GetComponent<Collider>();
+    }
+
     public void ToggleOn(int _index)
     {
         weldPoint[_index] = Instantiate(weldPointPrefab, position[_index], Quaternion.Euler(rotation[_index]), transform);
@@ -56,5 +57,14 @@ public class Node : MonoBehaviour
         return "WeldPoint_" + directionName[_index];
     }
 
+    public void OnBecomeMoving()
+    {
+        collider.enabled = false;
+    }
+
+    public void OnStopMoving()
+    {
+        collider.enabled = true;
+    }
 
 }
