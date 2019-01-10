@@ -34,25 +34,26 @@ public class CameraControl_Garage : MonoBehaviour {
 
     private void Update()
     {
+        //ESC解禁鼠标
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-    }
 
-    void LateUpdate ()
-    {
+        //WASD移动镜头
+        float inputH = Input.GetAxisRaw("Horizontal");
+        float inputV = Input.GetAxisRaw("Vertical");
+        Vector3 movement = (Vector3.forward * inputV + Vector3.right * inputH).normalized* cameraPanSpeed *Time.deltaTime;
+        camOrigin.Translate(movement);
+
+        //鼠标旋转镜头
         float inputMouseX = Input.GetAxis("Mouse X");
         float inputMouseY = Input.GetAxis("Mouse Y");
-
-        //Debug.Log(inputMouseX);
-        //Debug.Log(inputMouseY);
 
         //鼠标移动
         if (inputMouseX != 0 || inputMouseY != 0)
         {
-            //水平y，竖直x
             localRotation.y += inputMouseX * mouseSensitivity;
             localRotation.x -= inputMouseY * mouseSensitivity;
 
@@ -61,42 +62,29 @@ public class CameraControl_Garage : MonoBehaviour {
 
             //旋转镜头
             camOrigin.rotation = Quaternion.Euler(localRotation);
-
         }
 
-
-
+        //鼠标滚轮控制镜头距离
         float scrollWheelAmount = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
 
-        if(scrollWheelAmount != 0)
+        if (scrollWheelAmount != 0)
         {
             cameraDistance += scrollWheelAmount * -1;
             //限制镜头距离
             cameraDistance = Mathf.Clamp(cameraDistance, cameraDistanceLimit.x, cameraDistanceLimit.y);
-
         }
 
         //cam.localPosition = new Vector3(0, 0, Mathf.Lerp(cam.localPosition.z, -cameraDistance, Time.deltaTime * scrollSpeed));
         cam.localPosition = new Vector3(0, 0, -cameraDistance);
 
-        //WASD
-        float inputHorizontal = Input.GetAxisRaw("Horizontal");
-        float inputVertical = Input.GetAxisRaw("Vertical");
-
-
-        //camOrigin.Translate(new Vector3(inputHorizontal, up, inputVertical) * cameraPanSpeed);
-
-        //Debug.Log(transform.up);
-
         //镜头上升
-        if(Input.GetKey((KeyCode.Space))){
-            camOrigin.Translate(transform.up * cameraPanSpeed * Time.deltaTime);
-        } 
-        if(Input.GetKey(KeyCode.LeftShift)){
-            camOrigin.Translate(-1 * transform.up * cameraPanSpeed * Time.deltaTime);
-
+        if (Input.GetKey((KeyCode.Space)))
+        {
+            camOrigin.Translate(Vector3.up * cameraPanSpeed * Time.deltaTime);
         }
-
-
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            camOrigin.Translate(-1 * Vector3.up * cameraPanSpeed * Time.deltaTime);
+        }
     }
 }

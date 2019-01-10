@@ -10,7 +10,6 @@ public class Part : MonoBehaviour {
     {
         Collider[] colliders = Physics.OverlapBox(transform.position, Vector3.one * 1f, transform.rotation, layer);
 
-
         foreach (Collider item in colliders)
         {
             if(item.gameObject != gameObject)

@@ -2,97 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePartManager : MonoBehaviour {
-
+public class MovePartManager : MonoBehaviour
+{
     Camera cam;
 
     Transform target;
     Transform movingObj;
 
-    public LayerMask layer;
+    public LayerMask layer_part;
+    public LayerMask layer_wall;
 
     public float maxDistance = 15f;
 
-    private void Start()
+    RaycastHit hit;
+
+    void Start()
     {
         cam = Camera.main;
     }
 
     void Update ()
     {
-        RaycastHit hit;
+        //鼠标不在移动，结束
+        //if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0)
+            //return;
 
-        float inputMouseX = Input.GetAxis("Mouse X");
-        float inputMouseY = Input.GetAxis("Mouse Y");
-
-        //鼠标在移动
-        if (inputMouseX != 0 || inputMouseY != 0)
+        //如果没有正在移动的物体
+        if (movingObj == null)
         {
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 500, layer))
+            //从镜头前方获取高亮物体
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 500, layer_part))
             {
                 target = hit.transform;
-                //Debug.Log("hit");
 
                 //高亮所选
                 //target.GetComponentInChildren<Renderer>().materials[1].SetFloat("_OutlineWidth", 0.2f);
 
-            }
-            else
-            {
-                //BUG:连续进入两物体
-                target = null;
-            }
-
-            if (movingObj != null)
-            {
-                //if(movingObj.GetComponent<Part>().collided == false)
-                
-                    movingObj.transform.position = cam.transform.position;
-
-                StopAllCoroutines();
-                Move();
-
-
-
-            }
-        }
-
-
-        //鼠标左键点击
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(movingObj == null)
-            {
-                if(target != null)
+                //鼠标左键点击，选中该物体
+                if (Input.GetMouseButtonDown(0))
                 {
+                    print("选中" + target.gameObject.name);
                     movingObj = target;
                 }
             }
             else
             {
-                movingObj = null;
-
+                target = null;
             }
         }
-
-
-    }
-
-
-    void Move()
-    {
-        while (movingObj.GetComponent<Part>().Collided() == false && Vector3.Distance(movingObj.position, cam.transform.position) < maxDistance)
+        else
         {
+            //正在移动物体
 
-            movingObj.Translate(cam.transform.forward * 1f);
+            //移动该物体到镜头前方的可放置处
+            if (Physics.BoxCast(cam.transform.position, Vector3.one / 2, cam.transform.forward, out hit, Quaternion.identity, 500, layer_wall))
+            {
+                print(hit.normal);
+                movingObj.position = hit.point + hit.normal / 2;
+            }
 
-            //movingObj.gameObject.GetComponent<Collider>().    
-
-            //movingObj.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
-            //movingObj.gameObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward * 0.5f);
-
-
+            //鼠标右键点击，取消移动物体
+            if (Input.GetMouseButtonDown(1))
+            {
+                movingObj = null;
+            }
         }
     }
 }
