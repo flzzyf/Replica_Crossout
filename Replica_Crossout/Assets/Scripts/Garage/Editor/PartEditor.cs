@@ -25,8 +25,12 @@ public class PartEditor : Editor
                 for (int j = 0; j < main.size.y; j++)
                     for (int k = 0; k < main.size.z; k++)
                     {
-                        Instantiate(main.prefab_node, origin + new Vector3(i, j, k), Quaternion.identity, main.nodes);
+                        GameObject go = Instantiate(main.prefab_node, origin + new Vector3(i, j, k), Quaternion.identity, main.nodes);
+                        EditorUtility.SetDirty(go);
+
                     }
+
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

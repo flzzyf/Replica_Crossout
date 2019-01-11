@@ -6,11 +6,6 @@ public class Node : MonoBehaviour
 {
     public GameObject weldPointPrefab;
 
-    GameObject[] weldPoint = new GameObject[6];
-
-    //[HideInInspector]
-    public bool[] toggle = new bool[] { true,true,true,true,true,true};
-
     public static string[] directionName = { "上", "下", "左", "右", "前", "后" };
 
     public static Vector3[] position = {
@@ -20,7 +15,6 @@ public class Node : MonoBehaviour
         new Vector3(0, 0, 0.5f),
         new Vector3(0.5f, 0, 0),
         new Vector3(-0.5f, 0, 0)
-
     };
     static Vector3[] rotation ={
         new Vector3(0, 0, 0),
@@ -31,30 +25,33 @@ public class Node : MonoBehaviour
         new Vector3(0, 0, 90)
     };
 
-    public bool a = true;
-
     new Collider collider;
+
+    //特定位置有焊点
+    public bool[] hasWeldPoint = new bool[] { false, false, false, false, false, false};
+    //焊点物体
+    GameObject[] weldPoints = new GameObject[6];
+    Transform weldPointParent;
 
     void Start()
     {
         collider = GetComponent<Collider>();
     }
 
-    public void ToggleOn(int _index)
+    public void CreateWeldPoint(int _index)
     {
-        weldPoint[_index] = Instantiate(weldPointPrefab, position[_index], Quaternion.Euler(rotation[_index]), transform);
-        weldPoint[_index].transform.localPosition = position[_index];
-        weldPoint[_index].name = GetWeldPointName(_index);
+        if (weldPointParent == null)
+        {
+            weldPointParent = new GameObject("WelpPoints").transform;
+            weldPointParent.parent = transform;
+        }
+
+        weldPoints[_index] = Instantiate(weldPointPrefab, transform.position + position[_index], Quaternion.Euler(rotation[_index]), weldPointParent);
     }
 
-    public void ToggleOff(int _index)
+    public void RemoveWeldPoint(int _index)
     {
-        DestroyImmediate(weldPoint[_index]);
-    }
-
-    string GetWeldPointName(int _index)
-    {
-        return "WeldPoint_" + directionName[_index];
+        DestroyImmediate(weldPoints[_index]);
     }
 
     public void OnBecomeMoving()
