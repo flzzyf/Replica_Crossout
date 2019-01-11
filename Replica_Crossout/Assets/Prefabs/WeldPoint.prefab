@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4512678139992024}
   - component: {fileID: 65399699521712936}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeldPoint
   m_TagString: WeldPoint
   m_Icon: {fileID: 0}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(Part))]
 public class PartEditor : Editor
@@ -26,11 +27,13 @@ public class PartEditor : Editor
                     for (int k = 0; k < main.size.z; k++)
                     {
                         GameObject go = Instantiate(main.prefab_node, origin + new Vector3(i, j, k), Quaternion.identity, main.nodes);
-                        EditorUtility.SetDirty(go);
 
                     }
 
-            serializedObject.ApplyModifiedProperties();
+            //设置当前场景需要保存
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+
+            //serializedObject.ApplyModifiedProperties();
         }
     }
 }
