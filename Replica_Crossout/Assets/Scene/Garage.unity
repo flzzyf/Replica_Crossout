@@ -181,68 +181,6 @@ Transform:
   m_Father: {fileID: 1022970350}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &39729463
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 39729464}
-  m_Layer: 0
-  m_Name: WelpPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &39729464
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39729463}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2040485876}
-  m_Father: {fileID: 1374328478}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &58501782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 58501783}
-  m_Layer: 0
-  m_Name: WelpPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &58501783
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58501782}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 866964548}
-  m_Father: {fileID: 1374328478}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &70875660
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,24 +319,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &105786500
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58501783}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 66babf9fc29dad84f9b514ba63cccc1c, type: 3}
---- !u!1001 &121087188
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 39729464}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 66babf9fc29dad84f9b514ba63cccc1c, type: 3}
 --- !u!1 &127399107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,12 +1965,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &866964548 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4512678139992024, guid: 66babf9fc29dad84f9b514ba63cccc1c,
-    type: 3}
-  m_PrefabInstance: {fileID: 105786500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &870104866
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,12 +3031,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343164001}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1374328478 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4719237447155458, guid: 7474409ec12f7b44c984d7ea13c3caf3,
-    type: 3}
-  m_PrefabInstance: {fileID: 480474098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472173690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,15 +3262,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540497899}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1560193451
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2099147506}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 66babf9fc29dad84f9b514ba63cccc1c, type: 3}
 --- !u!1 &1609222371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3440,12 +3339,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609222371}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1632091345 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4512678139992024, guid: 66babf9fc29dad84f9b514ba63cccc1c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1560193451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645135354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3950,12 +3843,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &2040485876 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4512678139992024, guid: 66babf9fc29dad84f9b514ba63cccc1c,
-    type: 3}
-  m_PrefabInstance: {fileID: 121087188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2066223481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,37 +4056,6 @@ MonoBehaviour:
   cameraRotateSpeed: 10
   scrollSpeed: 6
   cameraPanSpeed: 10
---- !u!1 &2099147505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2099147506}
-  m_Layer: 0
-  m_Name: WelpPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2099147506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099147505}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1632091345}
-  m_Father: {fileID: 1374328478}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2135550753
 GameObject:
   m_ObjectHideFlags: 0

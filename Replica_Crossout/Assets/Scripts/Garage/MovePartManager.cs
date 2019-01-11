@@ -58,7 +58,7 @@ public class MovePartManager : MonoBehaviour
             //移动该物体到镜头前方的可放置处
             if (Physics.BoxCast(cam.transform.position, Vector3.one / 2, cam.transform.forward, out hit, Quaternion.identity, maxDistance, layer_collider))
             {
-                if(hit.transform != movingObj)
+                //if(hit.transform != movingObj)
                     movingObj.position = hit.point + hit.normal / 2;
             }
 
